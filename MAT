@@ -1,0 +1,232 @@
+# -*- coding: utf-8 -*-
+
+import subprocess
+
+from collections import Counter
+
+
+
+class Aluno:
+    def __init__(self, nome, nome_mae, nome_pai, sexo, data_nascimento,
+                 estado_civil, etnia, nacionalidade, naturalidade, ano,
+                 turma, turno, possui_pai_vivo, possui_mae_viva,
+                 possui_pais_separados, existe_litigio, pessoas_autorizadas,
+                 rg, orgao_emissor, uf, data_emissao, cpf, usa_transporte_escolar,
+                 autorizado_sair_sozinho, possui_necessidade_especial,
+                 possui_alergia_restricao_alimentar, fardamento,
+                 trouxe_rg_certidao, trouxe_cpf, trouxe_cartao_sus,
+                 recebe_bolsa_familia, trouxe_nis, indigena_ou_estrangeiro,
+                 trouxe_cartao_vacina, trouxe_transferencia_atestado, tem_irmaos_na_escola,
+                 trouxe_comprovante_residencia, municipio, endereco, bairro, numero_casa,
+                 complemento, cep, telefones, whatsapp, autoriza_uso_imagem,
+                 autoriza_saidas_passeio_escolar, ciente_veracidade_dados):
+        self.nome = nome
+        self.nome_mae = nome_mae
+        self.nome_pai = nome_pai
+        self.sexo = sexo
+        self.data_nascimento = data_nascimento
+        self.estado_civil = estado_civil
+        self.etnia = etnia
+        self.nacionalidade = nacionalidade
+        self.naturalidade = naturalidade
+        self.ano = ano
+        self.turma = turma
+        self.turno = turno
+        self.possui_pai_vivo = possui_pai_vivo
+        self.possui_mae_viva = possui_mae_viva
+        self.possui_pais_separados = possui_pais_separados
+        self.existe_litigio = existe_litigio
+        self.pessoas_autorizadas = pessoas_autorizadas
+        self.rg = rg
+        self.orgao_emissor = orgao_emissor
+        self.uf = uf
+        self.data_emissao = data_emissao
+        self.cpf = cpf
+        self.usa_transporte_escolar = usa_transporte_escolar
+        self.autorizado_sair_sozinho = autorizado_sair_sozinho
+        self.possui_necessidade_especial = possui_necessidade_especial
+        self.possui_alergia_restricao_alimentar = possui_alergia_restricao_alimentar
+        self.fardamento = fardamento
+        self.trouxe_rg_certidao = trouxe_rg_certidao
+        self.trouxe_cpf = trouxe_cpf
+        self.trouxe_cartao_sus = trouxe_cartao_sus
+        self.recebe_bolsa_familia = recebe_bolsa_familia
+        self.trouxe_nis = trouxe_nis
+        self.indigena_ou_estrangeiro = indigena_ou_estrangeiro
+        self.trouxe_cartao_vacina = trouxe_cartao_vacina
+        self.trouxe_transferencia_atestado = trouxe_transferencia_atestado
+        self.tem_irmaos_na_escola = tem_irmaos_na_escola
+        self.trouxe_comprovante_residencia = trouxe_comprovante_residencia
+        self.municipio = municipio
+        self.endereco = endereco
+        self.bairro = bairro
+        self.numero_casa = numero_casa
+        self.complemento = complemento
+        self.cep = cep
+        self.telefones = telefones
+        self.whatsapp = whatsapp
+        self.autoriza_uso_imagem = autoriza_uso_imagem
+        self.autoriza_saidas_passeio_escolar = autoriza_saidas_passeio_escolar
+        self.ciente_veracidade_dados = ciente_veracidade_dados
+
+
+alunos = []
+
+
+def cadastrar_aluno():
+    nome = input('Nome do aluno: ')
+    print('---------------------------------')  # Linha adicionada
+    nome_mae = input('Nome da Mãe: ')
+    nome_pai = input('Nome do Pai: ')
+    sexo = input('Sexo: ')
+    data_nascimento = input('Data de nascimento: ')
+    estado_civil = input('Estado civil: ')
+    etnia = input('Etnia: ')
+    nacionalidade = input('Nacionalidade: ')
+    naturalidade = input('Naturalidade: ')
+    ano = input('Ano: ')
+    turma = input('Turma: ')
+    turno = input('Turno: ')
+    possui_pai_vivo = input('Possui Pai Vivo?: ')
+    possui_mae_viva = input('Possui Mãe Viva?: ')
+    possui_pais_separados = input('Possui Pais Separados?: ')
+    existe_litigio = input('Existe Litígio?: ')
+    pessoas_autorizadas = input('Pessoas Autorizadas: ')
+    rg = input('RG: ')
+    orgao_emissor = input('Órgão Emissor: ')
+    uf = input('UF: ')
+    data_emissao = input('Data de Emissão: ')
+    cpf = input('CPF: ')
+    usa_transporte_escolar = input('Usa Transporte Escolar?: ')
+    autorizado_sair_sozinho = input('Autorizado a Sair Sozinho?: ')
+    possui_necessidade_especial = input('Possui Necessidade Especial?: ')
+    possui_alergia_restricao_alimentar = input('Possui Alergia ou Restrição Alimentar?: ')
+    fardamento = input('Fardamento: Camisa, Short, Sapato: ')
+    trouxe_rg_certidao = input('Trouxe RG ou Certidão?: ')
+    trouxe_cpf = input('Trouxe CPF?: ')
+    trouxe_cartao_sus = input('Trouxe Cartão SUS?: ')
+    recebe_bolsa_familia = input('Recebe Bolsa Família?: ')
+    trouxe_nis = input('Trouxe NIS?: ')
+    indigena_ou_estrangeiro = input('É Indígena ou Estrangeiro?: ')
+    trouxe_cartao_vacina = input('Trouxe Cartão de Vacina?: ')
+    trouxe_transferencia_atestado = input('Trouxe Transferência ou Atestado?: ')
+    tem_irmaos_na_escola = input('Tem Irmãos na Escola?: ')
+    trouxe_comprovante_residencia = input('Trouxe Comprovante de Residência?: ')
+    municipio = input('Município: ')
+    endereco = input('Endereço: ')
+    bairro = input('Bairro: ')
+    numero_casa = input('Nº da Casa: ')
+    complemento = input('Complemento: ')
+    cep = input('CEP: ')
+    telefones = input('Telefones: ')
+    whatsapp = input('Whatsapp: ')
+    autoriza_uso_imagem = input('Autoriza o Uso de Imagem?: ')
+    autoriza_saidas_passeio_escolar = input('Autoriza Saídas a Passeio Escolar?: ')
+    ciente_veracidade_dados = input('Está Ciente da Veracidade dos Dados Informados?: ')
+
+    aluno = Aluno(nome, nome_mae, nome_pai, sexo, data_nascimento, estado_civil,
+                  etnia, nacionalidade, naturalidade, ano, turma, turno, possui_pai_vivo,
+                  possui_mae_viva, possui_pais_separados, existe_litigio, pessoas_autorizadas, rg,
+                  orgao_emissor, uf, data_emissao, cpf, usa_transporte_escolar, autorizado_sair_sozinho,
+                  possui_necessidade_especial, possui_alergia_restricao_alimentar, fardamento,
+                  trouxe_rg_certidao, trouxe_cpf, trouxe_cartao_sus, recebe_bolsa_familia, trouxe_nis,
+                  indigena_ou_estrangeiro, trouxe_cartao_vacina, trouxe_transferencia_atestado,
+                  tem_irmaos_na_escola, trouxe_comprovante_residencia, municipio, endereco, bairro,
+                  numero_casa, complemento, cep, telefones, whatsapp, autoriza_uso_imagem,
+                  autoriza_saidas_passeio_escolar, ciente_veracidade_dados)
+    alunos.append(aluno)
+
+def consultar_cadastro():
+    for aluno in alunos:
+        print(f'Nome: {aluno.nome}\n---------------------------------\nNome da Mãe:{aluno.nome_mae}\nNome do Pai: {aluno.nome_pai}\nSexo: {aluno.sexo}\nData de Nascimento: {aluno.data_nascimento}\nEstado Civil: {aluno.estado_civil}\nEtnia: {aluno.etnia}\nNacionalidade: {aluno.nacionalidade}\nNaturalidade: {aluno.naturalidade}\nAno: {aluno.ano}\nTurma: {aluno.turma}\nTurno: {aluno.turno}\nPossui Pai Vivo?: {aluno.possui_pai_vivo}\nPossui Mãe Viva?: {aluno.possui_mae_viva}\nPossui Pais Separados?: {aluno.possui_pais_separados}\nExiste Litígio?: {aluno.existe_litigio}\nPessoas Autorizadas: {aluno.pessoas_autorizadas}\nRG: {aluno.rg}\nÓrgão Emissor: {aluno.orgao_emissor}\nUF: {aluno.uf}\nData de Emissão: {aluno.data_emissao}\nCPF: {aluno.cpf}\nUsa Transporte Escolar?: {aluno.usa_transporte_escolar}\nAutorizado a Sair Sozinho?: {aluno.autorizado_sair_sozinho}\nPossui Necessidade Especial?: {aluno.possui_necessidade_especial}\nPossui Alergia ou Restrição Alimentar?: {aluno.possui_alergia_restricao_alimentar}\nFardamento: {aluno.fardamento}\nTrouxe RG ou Certidão?: {aluno.trouxe_rg_certidao}\nTrouxe CPF?: {aluno.trouxe_cpf}\nTrouxe Cartão SUS?: {aluno.trouxe_cartao_sus}\nRecebe Bolsa Família?: {aluno.recebe_bolsa_familia}\nTrouxe NIS?: {aluno.trouxe_nis}\nÉ Indígena ou Estrangeiro?: {aluno.indigena_ou_estrangeiro}\nTrouxe Cartão de Vacina?: {aluno.trouxe_cartao_vacina}\nTrouxe Transferência ou Atestado?: {aluno.trouxe_transferencia_atestado}\nTem Irmãos na Escola?: {aluno.tem_irmaos_na_escola}\nTrouxe Comprovante de Residência?: {aluno.trouxe_comprovante_residencia}\nMunicípio: {aluno.municipio}\nEndereço: {aluno.endereco}\nBairro: {aluno.bairro}\nNº da Casa: {aluno.numero_casa}\nComplemento: {aluno.complemento}\nCEP: {aluno.cep}\nTelefones: {aluno.telefones}\nWhatsapp: {aluno.whatsapp}\nAutoriza o Uso de Imagem?: {aluno.autoriza_uso_imagem}\nAutoriza Saídas a Passeio Escolar?: {aluno.autoriza_saidas_passeio_escolar}\nEstá Ciente da Veracidade dos Dados Informados?: {aluno.ciente_veracidade_dados}')
+
+        
+def excluir_cadastro():
+    nome = input('Digite o nome do aluno que deseja excluir: ')
+    for aluno in alunos:
+        if aluno.nome == nome:
+            alunos.remove(aluno)
+            print('Aluno removido com sucesso.')
+            break
+    else:
+        print('Aluno não encontrado.')
+
+def abrir_arquivo(programas, arquivo):
+    for programa in programas:
+        try:
+            subprocess.run([programa, arquivo])
+            break
+        except FileNotFoundError:
+            continue
+
+def imprimir_cadastro():
+    with open('matricula_2024.txt', 'w') as f:
+        f.write('Matrícula 2024 - Escola Lídice Antunes Barros\n\n')
+        counter = Counter(aluno.ano for aluno in alunos)
+        total_cadastros = sum(counter.values())
+        counter_sexo = Counter(aluno.sexo for aluno in alunos)  # Contador para o sexo dos alunos
+        for ano, value in counter.items():
+            f.write(f'Ano: {ano}, Total de Cadastros: {value}\n')
+        f.write(f'Total Geral de Cadastros: {total_cadastros}\n')
+        f.write(f'Total de Meninas: {counter_sexo.get("FEMININO", 0)}\n')  # Total de cadastros femininos
+        f.write(f'Total de Meninos: {counter_sexo.get("MASCULINO", 0)}\n')  # Total de cadastros masculinos
+        f.write('\f')  # Nova página para os cadastros
+        pagina = 1  # Variável de contador para o número da página
+        campos_vazios_por_aluno = {}  # Dicionário para armazenar os campos vazios de cada aluno
+        for aluno in alunos:
+            f.write(f'Página: {pagina}\n')  # Inserir o número da página
+            f.write('Matrícula 2024 - Escola Lídice Antunes Barros\n\n')  # Título em cada página
+            f.write(f'Nome: {aluno.nome.upper()}\n---------------------------------\nNome da Mãe: {aluno.nome_mae}\nNome do Pai: {aluno.nome_pai}\nSexo: {aluno.sexo}\nData de Nascimento: {aluno.data_nascimento}\nEstado Civil: {aluno.estado_civil}\nEtnia: {aluno.etnia}\nNacionalidade: {aluno.nacionalidade}\nNaturalidade: {aluno.naturalidade}\nAno: {aluno.ano}\nTurma: {aluno.turma}\nTurno: {aluno.turno}\nPossui Pai Vivo?: {aluno.possui_pai_vivo}\nPossui Mãe Viva?: {aluno.possui_mae_viva}\nPossui Pais Separados?: {aluno.possui_pais_separados}\nExiste Litígio?: {aluno.existe_litigio}\nPessoas Autorizadas: {aluno.pessoas_autorizadas}\nRG: {aluno.rg}\nÓrgão Emissor: {aluno.orgao_emissor}\nUF: {aluno.uf}\nData de Emissão: {aluno.data_emissao}\nCPF: {aluno.cpf}\nUsa Transporte Escolar?: {aluno.usa_transporte_escolar}\nAutorizado a Sair Sozinho?: {aluno.autorizado_sair_sozinho}\nPossui Necessidade Especial?: {aluno.possui_necessidade_especial}\nPossui Alergia ou Restrição Alimentar?: {aluno.possui_alergia_restricao_alimentar}\nFardamento: {aluno.fardamento}\nTrouxe RG ou Certidão?: {aluno.trouxe_rg_certidao}\nTrouxe CPF?: {aluno.trouxe_cpf}\nTrouxe Cartão SUS?: {aluno.trouxe_cartao_sus}\nRecebe Bolsa Família?: {aluno.recebe_bolsa_familia}\nTrouxe NIS?: {aluno.trouxe_nis}\nÉ Indígena ou Estrangeiro?: {aluno.indigena_ou_estrangeiro}\nTrouxe Cartão de Vacina?: {aluno.trouxe_cartao_vacina}\nTrouxe Transferência ou Atestado?: {aluno.trouxe_transferencia_atestado}\nTem Irmãos na Escola?: {aluno.tem_irmaos_na_escola}\nTrouxe Comprovante de Residência?: {aluno.trouxe_comprovante_residencia}\nMunicípio: {aluno.municipio}\nEndereço: {aluno.endereco}\nBairro: {aluno.bairro}\nNº da Casa: {aluno.numero_casa}\nComplemento: {aluno.complemento}\nCEP: {aluno.cep}\nTelefones: {aluno.telefones}\nWhatsapp: {aluno.whatsapp}\nAutoriza o Uso de Imagem?: {aluno.autoriza_uso_imagem}\nAutoriza Saídas a Passeio Escolar?: {aluno.autoriza_saidas_passeio_escolar}\nEstá Ciente da Veracidade dos Dados Informados?: {aluno.ciente_veracidade_dados}\n')
+            f.write('---------------------------------\n')
+            f.write('--AUTORIZO, PARA OS DEVIDOS FINS, O USO DA IMAGEM DO ALUNO APENAS PARA FINS EDUCACIONAIS, COMO PROJETOS OU DIVULGAÇÃO NAS PÁGINAS OFICIAIS DA SEDUC E DESTA INSTITUIÇÃO DE ENSINO.\n')
+            f.write('--AUTORIZO, PARA OS DEVIDOS FINS, A SAÍDA DO ALUNO PARA ATIVIDADES EXTRACLASSE, SEMPRE ACOMPANHADO DE UM RESPONSÁVEL PELA ESCOLA E PELOS ALUNOS.\n')
+            f.write('---------------------------------\n')
+            f.write('Assinatura da Pessoa Responsável pela Matrícula: ___________________________________________________\n')
+            f.write('Assinatura do Funcionário Responsável Pela Matrícula: ___________________________________________________\n')
+            f.write('Data da Matrícula: ____/____/_________\n\f')
+            pagina += 1  # Incrementar o número da página
+            campos_vazios = [campo for campo in vars(aluno) if not vars(aluno)[campo]]
+            campos_vazios = [campo for campo in vars(aluno) if not vars(aluno)[campo]]
+            if campos_vazios:
+                campos_vazios_por_aluno[aluno.nome] = campos_vazios  # Adicionar os campos vazios ao dicionário
+        if campos_vazios_por_aluno:
+            f.write('\f')  # Nova página para os documentos faltando
+            f.write('Documentos Faltando:\n')
+            for aluno, campos_vazios in campos_vazios_por_aluno.items():
+                f.write(f'{aluno}:\n')  # Nome do aluno
+                f.write('\n'.join(campos_vazios))  # Campos vazios
+                f.write('\n')
+                f.write('\n')  # Nova linha após a lista de campos vazios
+    abrir_arquivo(['libreoffice --write', 'soffice', 'winword', 'abiword', 'xed', 'wordpad'], 'matricula_2024.txt')
+
+def menu():
+    while True:
+        print('                   ')
+        print('ESCOLA MUNICIPAL PROFESSORA LÍDICE ANTUNES BARROS')
+        print('MATRÍCULA 2024')
+        print('                   ')
+        print('1 - Cadastrar aluno')
+        print('2 - Consultar cadastro')
+        print('3 - Excluir cadastro')
+        print('4 - Imprimir cadastro')
+        print('5 - Sair do programa')
+        print('   ')
+        opcao = input('Escolha uma opção: ')
+        
+        if opcao == '1':
+            cadastrar_aluno()
+        elif opcao == '2':
+            consultar_cadastro()
+        elif opcao == '3':
+            excluir_cadastro()
+        elif opcao == '4':
+            imprimir_cadastro()
+        elif opcao == '5':
+            break
+        else:
+            print('Opção inválida. Tente novamente.')
+
+
+    
+
+menu()
